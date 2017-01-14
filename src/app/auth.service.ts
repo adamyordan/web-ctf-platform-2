@@ -51,7 +51,7 @@ export class AuthService {
       this.auth.subscribe((state: FirebaseAuthState) => {
         if (state) {
           this.af.database.object('users/' + state.uid).subscribe(
-            (user: User) => observer.next(user != null));          
+            (user) => observer.next(user.$exists()));          
         } else {
           observer.next(false);
         }
@@ -64,7 +64,7 @@ export class AuthService {
       this.auth.subscribe((state: FirebaseAuthState) => {
         if (state) {
           this.af.database.object('users/' + state.uid).subscribe(
-            (user: User) => observer.next(user != null && user.superuser));          
+            (user) => observer.next(user.$exists() && user.superuser));          
         } else {
           observer.next(false);
         }
@@ -77,7 +77,7 @@ export class AuthService {
       this.auth.subscribe((state: FirebaseAuthState) => {
         if (state) {
           this.af.database.object('users/' + state.uid).subscribe(
-            (user: User) => observer.next({authenticated: true, registered: user != null}));          
+            (user) => observer.next({authenticated: true, registered: user.$exists()}));          
         } else {
           observer.next({authenticated: false, registered: false});
         }

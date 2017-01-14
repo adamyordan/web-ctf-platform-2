@@ -13,6 +13,7 @@ export class RegisterPageGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.authService.authRegState.map((state: any) => {
+      console.log(state);
       if (state.registered) {
         this.router.navigate(['/home']);
         return false;
