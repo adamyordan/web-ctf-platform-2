@@ -4,6 +4,7 @@ import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'a
 
 import { Contest } from '../shared/contest.model';
 import { Challenge } from '../shared/challenge.model';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'ctf-deck-manage',
@@ -99,7 +100,7 @@ export class DeckManageComponent {
   }
 
   saveChallengeForm() {
-    const newChallenge = new Challenge(this.newChallengeName, this.newChallengeFlag, this.newChallengeDescription);
+    const newChallenge = new Challenge(this.newChallengeName, this.newChallengeFlag, Md5.hashStr(this.newChallengeFlag)+'', this.newChallengeDescription);
     if (this.newChallengeId == 'NEW') {
       this.af.database.list('challenges').push(newChallenge);
     } else {
