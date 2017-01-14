@@ -1,0 +1,63 @@
+<div class="ctf-library">
+  <div class="library-header"><h3>L I B R A R Y</h3></div>
+    
+  <div class="library-nav">
+    <div class="library-container">
+      <ul class="nav nav-pills">
+        <li [class.active]="selectedTab === 'latest'"><a (click)="selectedTab = 'latest'">Latest</a></li>
+        <li><a>Coming Soon</a></li>
+        <li><a>Coming Soon</a></li>
+        <li *ngIf="(authService?.isSuperUser|async)" class="addNewPill" 
+          [class.activated]="isAddFormShown" 
+          (click)="toggleAddForm()"><a>Add new</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="library-content">
+    <div class="library-container">
+
+      <div class="library-item" *ngIf="isAddFormShown">
+        <form (ngSubmit)="onNewContestSubmit()">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="name" required 
+              class="form-control" 
+              [(ngModel)]="newContest.name">            
+          </div>
+          <div class="form-group">
+            <textarea name="description" placeholder="description" required
+              class="form-control" 
+              [(ngModel)]="newContest.description"></textarea>            
+          </div>
+          <button type="submit" class="btn btn-default">add</button>
+        </form>
+      </div>
+
+      <div *ngFor="let contest of contests | async">
+        
+        <div class="library-item">
+          <div class="row">
+            <div class="col-md-8">
+              <h5>{{contest.name}}</h5>
+              <p>{{contest.description}}</p>
+              <button class="btn btn-enter" (click)="enterBoard(contest.$key)">Enter</button>
+              <button class="btn btn-default" *ngIf="(authService?.isSuperUser|async)" 
+                (click)="manageBoard(contest.$key)">Manage</button>
+            </div>
+            <div class="col-md-4">
+              <div class="library-meta">
+                <ul>
+                  <li>Start:</li>
+                  <li>End:</li>
+                  <li>Players: {{ (contest.participants ? '?' : 0) }}</li>
+                  <li *ngIf="(isParticipated(contest)|async)"><b>Participated</b></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

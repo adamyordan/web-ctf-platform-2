@@ -1,0 +1,127 @@
+<div class="ctf-deck-manage">
+  <div class="dm-header"><h3>Deck Manage</h3></div>
+  <div class="dm-content">
+    <div class="dm-card">
+      <table class="table-meta">
+        <tr>
+          <td class="key">Name</td>
+          <td>{{(contest | async)?.name}}</td>
+        </tr>
+        <tr>
+          <td class="key">Description</td>
+          <td>{{(contest | async)?.description}}</td>
+        </tr>
+        <tr>
+          <td class="key"></td>
+          <td>
+            <button class="btn btn-default" *ngIf="!isContestFormShown" 
+              (click)="showContestForm()">Edit</button>
+          </td>
+        </tr>
+      </table>
+      <div class="dm-card edit" *ngIf="isContestFormShown">
+        <table class="table-meta">
+          <tr>
+            <td class="key">Name</td>
+            <td><input type="text" class="form-control" placeholder="New name" 
+              [(ngModel)]="newContestName"></td>
+          </tr>
+          <tr>
+            <td class="key">Description</td>
+            <td><textarea cols="30" rows="3" class="form-control"  placeholder="New Description" 
+              [(ngModel)]="newContestDescription"></textarea></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button class="btn btn-primary" (click)="saveContestForm()">Save</button>
+              <button class="btn btn-default" (click)="isContestFormShown=false">Close</button>
+            </td>
+          </tr>
+        </table>      
+      </div>
+    </div>
+    <div class="dm-card">
+      <div *ngFor="let challenge of challenges">
+        <div class="dm-challenge-item">
+          <div class="dmc-name">{{(challenge | async)?.name}}</div>
+          <div class="dmc-category">{{(challenge | async)?.category}}</div>
+          <div class="dmc-point">{{(challenge | async)?.point}}</div>
+          <div class="dmc-action">
+            <button class="btn btn-sm btn-default" 
+              (click)="editChallenge(challenge)">edit</button>
+            <button class="btn btn-sm btn-danger" 
+              (click)="removeChallengeFromContest(challenge)">delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dm-card">
+
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" (click)="addNewChallenge()">New</button>
+        </span>
+        <select class="form-control" [ngModel]="selectedAllChallenge"
+          (ngModelChange)="onChangeSelectAllChallenge($event)">
+
+          <option disabled>Select challenge here</option>
+          <option *ngFor="let challenge of allChallenges | async" [ngValue]="challenge">
+            {{challenge.$key}} - {{challenge.name}}
+          </option>
+
+        </select>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" (click)="addSelectedChallenge()">add</button>
+          <button class="btn btn-default" type="button" (click)="editSelectedChallenge()">edit</button>
+        </span>
+      </div>
+
+      <div *ngIf="selectedAllChallenge">
+        <table class="table-meta">
+          <tr>
+            <td class="key">Name</td>
+            <td>{{selectedAllChallenge.name}}</td>
+          </tr>
+          <tr>
+            <td class="key">Description</td>
+            <td>{{selectedAllChallenge.description}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="dm-card edit" *ngIf="isChallengeFormShown">
+        <table class="table-meta">
+          <tr>
+            <td class="key">Key</td>
+            <td><input type="text" class="form-control" placeholder="New Id" disabled
+              [(ngModel)]="newChallengeId"></td>
+          </tr>
+          <tr>
+            <td class="key">Name</td>
+            <td><input type="text" class="form-control" placeholder="New name" 
+              [(ngModel)]="newChallengeName"></td>
+          </tr>
+          <tr>
+            <td class="key">Description</td>
+            <td><textarea cols="30" rows="3" class="form-control"  placeholder="New Description" 
+              [(ngModel)]="newChallengeDescription"></textarea></td>
+          </tr>
+          <tr>
+            <td class="key">Flag</td>
+            <td><input type="text" class="form-control" placeholder="New flag" 
+              [(ngModel)]="newChallengeFlag"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button class="btn btn-primary" (click)="saveChallengeForm()">Save</button>
+              <button class="btn btn-default" (click)="isChallengeFormShown=false">Close</button>
+            </td>
+          </tr>
+        </table>      
+      </div>
+
+    </div>
+  </div>
+</div>

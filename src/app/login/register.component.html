@@ -1,0 +1,17 @@
+<div class="ctf-login">
+  <div class="login-card">
+    <h3 class="main-title">R E G I S T E R</h3>
+    <p>Logged in as <b>{{(af.auth|async)?.google.email}}</b> <a class="signout-anchor" (click)="logout()">sign out</a></p>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="form-control register-input" placeholder="username" 
+        [(ngModel)]="username">
+    </div>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" class="form-control register-input" placeholder="full name"
+        [(ngModel)]="fullname">
+    </div>
+    <button class="btn btn-default btn-login" (click)="continue()">Continue</button>    
+  </div>
+</div>

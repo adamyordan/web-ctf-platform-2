@@ -1,0 +1,65 @@
+.ctf-library {
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+}
+
+.library-header {
+  background-color: #eee;
+  text-align: center;
+  color: #555 !important;
+  padding: 20px;
+}
+.library-header h3 {
+  margin: 0;
+  font-weight: bold
+}
+.library-nav {
+  min-height: 80px;
+  background-color: #ddd;
+  padding: 20px;
+}
+.library-nav .nav-pills>li>a {
+  color: #555;
+  font-weight: bold;
+  cursor: pointer;
+}
+.library-nav .nav-pills>li.active>a {
+  color: #fff;
+  background-color: #2aa;
+}
+.library-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.library-content {
+  padding: 20px;
+}
+.library-item {
+  min-height: 100px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.library-item h5 {
+  color: #2aa;
+  font-weight: bold;
+  margin-top: 0px;
+}
+.btn-enter {
+  background-color: #2aa;
+  color: white;
+}
+.library-meta ul {
+  list-style-type: none;
+  color: #999;
+}
+.addNewPill > a {
+  background-color: #eb5;
+  color: white !important;
+}
+.addNewPill > a:hover {
+  background-color: #fb5;
+}
+.addNewPill.activated > a {
+  background-color: #da6;
+}

@@ -1,0 +1,70 @@
+.ctf-deck-manage {
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+}
+.dm-header {
+  background-color: #eee;
+  text-align: center;
+  color: #555 !important;
+  padding: 20px;
+}
+.dm-header h3 {
+  margin: 0;
+  font-weight: bold
+}
+.dm-content {
+}
+.dm-card {
+  background-color: white;
+  max-width: 700px;
+  padding: 20px;
+  margin: 10px auto;
+}
+.table-meta td {
+  padding: 10px;
+}
+.table-meta .key {
+  font-weight: bold;
+  vertical-align: top;
+}
+.dm-challenge-item {
+  border: 1px solid #ddd;
+  margin: 5px 0px;
+  display: flex;
+  padding: 0px 5px;
+}
+.dm-challenge-item:hover {
+  background-color: rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+.dm-challenge-item.active {
+  background-color: rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.dmc-id, .dmc-name, .dmc-point, .dmc-action, .dmc-category {
+  flex: 1;
+  text-align: center;
+  padding: 10px 5px;
+  line-height: 1;
+}
+.dmc-name {
+  text-align: left;
+}
+.dmc-action {
+  padding: 0px;
+  text-align: left;
+}
+.dmc-action button {
+  margin: 0px;
+  height: 100%;
+  border-radius: 0px;
+  min-width: 50px;
+  border: 1px solid #ddd;
+  border-top: 0px;
+  border-bottom: 0px;
+}
+.dm-card.edit {
+  background-color: #2aa;
+  color: white;
+  border-radius: 5px;
+}

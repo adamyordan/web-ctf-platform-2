@@ -1,0 +1,98 @@
+.main-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100%;
+    z-index: 600;
+    background: #2aa;
+}
+
+.logo-wrapper {
+  height: 50px;
+  z-index: 5;
+  background-color: rgba(0,0,0,0.1);
+  border-bottom: rgba(0, 0, 0, 0.2);
+  color: white;
+  padding: 10px;
+}
+
+.logo-wrapper .logo-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4cc;
+  text-align: center;
+}
+
+.main-menu {
+  padding-top: 20px;
+}
+
+.main-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    padding-left: 220px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    z-index: 100;
+}
+
+.main-content {
+    width: 100%;
+    padding-left: 220px;
+    padding-top: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.nav-stacked > li+li {
+    margin: 0px;
+}
+
+.nav-stacked > li > a {
+    border-radius: 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.nav-pills>li>a.active, .nav-pills>li>a.active:focus, .nav-pills>li>a.active:hover {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.nav-stacked > li :hover, .nav-stacked > li :focus {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.1);        
+}
+
+.nav-stacked > li > a {
+    color: white;
+}
+
+#content-right {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.right-topbar {
+  float: right;
+}
+.btn-signout {
+  border-radius: 50px;
+  margin: 10px;
+  background-color: white;
+  border: 2px solid #2aa;
+  font-weight: bold;
+  color: #2aa;
+}
+.btn-signout:hover {
+  background-color: #2aa;
+  color: white;
+}
+.hi-username {
+
+}

@@ -1,0 +1,25 @@
+.ctf-board-register {
+  padding: 20px;
+}
+.cbr-card {
+  margin: 20px auto;
+  background-color: white;
+  padding: 20px;
+  max-width: 400px;
+}
+.table-meta td {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.table-meta .key {
+  font-weight: bold;
+  vertical-align: top;
+}
+.btn-enter {
+  background-color: #2aa;
+  color: white;
+}
+.cbr-card-action {
+  margin-top: 20px;
+}

@@ -1,0 +1,31 @@
+<div class="ctf-card" *ngIf="problem">
+  <div class="ctf-card-header">
+    <a (click)="closeCard()" class="close card-close">&times;</a>
+    <h3>{{(problem | async)?.name}}</h3>
+    <div class="detail">
+      <span class="meta">Id: <span class="val">{{(problem | async)?.id}}</span></span>
+      <span class="meta">Category: <span class="val">{{(problem | async)?.category}}</span></span>
+      <span class="meta">Author: <span class="val">{{(problem | async)?.author}}</span></span>
+      <span class="meta">Point: <span class="val">{{(problem | async)?.point}}</span></span>
+    </div>
+  </div>
+  <nav>
+    <a [class.active]="selectedTab === 'problem'" (click)="selectedTab='problem'">Problem</a>
+    <a [class.active]="selectedTab === 'hints'" (click)="selectedTab='hints'">Hints</a>
+    <a [class.active]="selectedTab === 'solves'" (click)="selectedTab='solves'">Solves</a>
+    <a [class.active]="selectedTab === 'writeup'" (click)="selectedTab='writeup'">Write-Up</a>
+  </nav>
+  <div class="ctf-card-content">
+    <div *ngIf="selectedTab === 'problem'">
+      <span>{{(problem | async)?.description}}</span>
+      <input class="form-control" type="text" placeholder="flag" [(ngModel)]="editableFlag">
+      <button class="btn btn-primary btn-flag" (click)="submitFlag()">Submit</button>
+    </div>
+    <div *ngIf="selectedTab === 'hints'">
+    </div>        
+    <div *ngIf="selectedTab === 'solves'">
+    </div>
+    <div *ngIf="selectedTab === 'writeup'">
+    </div>        
+  </div>
+</div>

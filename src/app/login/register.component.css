@@ -1,0 +1,58 @@
+.ctf-login {
+  background-color: #2aa;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.login-card {
+  /*background-color: rgba(255,255,255,0.1);*/
+  max-width: 700px;
+  margin: 10px auto;
+  padding: 40px;
+  text-align: center;
+  color: white;
+  position: relative;
+  top: 50%;
+  transform: translateY(-60%);
+  border: 2px solid white;
+  border-radius: 4px;
+}
+.main-title {
+  font-size: 3em;
+  color: white;
+}
+.main-description {
+  color: white;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.btn-login {
+  background-color: rgba(0,0,0,0);
+  border: 2px solid white;
+  font-size: 2em;
+  color: white;
+  margin-top: 20px;
+}
+.btn-login:hover {
+  background-color: white;
+  color: #2aa;
+}
+.register-input {
+  background-color: rgba(0,0,0,0);
+  border: 2px solid white;
+  color: white;
+  text-align: center;
+  font-size: 2em;
+  padding: 25px;
+}
+.register-input::placeholder {
+  color: #4bb;
+}
+.form-group {
+  margin-top: 20px;
+  margin-botton: 20px;
+}
+.signout-anchor {
+  color: #6dd !important;
+  font-weight: bold;
+}

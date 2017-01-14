@@ -1,0 +1,31 @@
+<div *ngIf="showSplash">
+  <ctf-splash></ctf-splash>
+</div>
+
+<div class="ctf-dashboard">
+  <div *ngIf="(showDashboard|async)">
+    <div class="main-sidebar">
+      <div class="logo-wrapper">
+        <div class="logo-text"><span>NetSOS CTF</span></div>
+      </div>
+
+      <div class="main-menu">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+          <li><a routerLink="/pwn" routerLinkActive="active">Pwn</a></li>
+          <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-topbar">
+      <div class="right-topbar">
+        <span class="hi-username">Hi, <b>{{(authService?.user|async)?.username}}</b></span>
+        <button class="btn btn-sm btn-signout" (click)="logout()">Sign out</button>          
+      </div>
+    </div>    
+  </div>
+  <div [class.main-content]="(showDashboard|async)">
+    <router-outlet></router-outlet>
+  </div>            
+</div>

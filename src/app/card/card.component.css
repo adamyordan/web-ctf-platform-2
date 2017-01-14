@@ -1,0 +1,67 @@
+.ctf-card {
+  background-color: #fff;
+  font-family: sans-serif;
+}
+.ctf-card-header {
+  width: 100%;
+  padding: 10px 20px;
+}
+.ctf-card-header > .detail span.meta {
+  font-size: 0.9em;
+  color: #555;
+  margin-right: 10px;
+}
+.ctf-card-header > .detail span.val {
+  color: #2aa;
+}
+.ctf-card > nav {
+  width: 100%;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.ctf-card > nav a {
+  font-weight: bold;
+  color: #12abab;
+  margin: 0px 10px;
+}
+.ctf-card > nav a.active {
+  color: #555555;
+}
+.ctf-card-content {
+  padding: 20px;
+  overflow-y: scroll;
+  height: calc(100vh - 174px);
+}
+.ctf-card h3 {
+  margin: 8px 0px;
+}
+.ctf-card input[type=text] {
+  border-radius: 0;
+  width: 100%;
+  font-size: 1.5em;
+  padding: 20px 15px;
+  color: #2aa;
+  box-shadow: none !important;
+  margin: 15px 0px;
+}
+.btn-flag {
+  border: 0px;
+  border-radius: 0px;
+  padding: 10px;
+  background-color: #2aa;
+}
+.hint-item {
+  background-color: #fff;
+  min-height: 40px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.hi-id {
+  color: #2aa;
+  font-weight: bold;
+}
+.hi-content {
+}
