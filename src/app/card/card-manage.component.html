@@ -1,0 +1,50 @@
+<div class="ccm-bg"></div>
+<div class="ctf-card-manage">
+  <div class="ccm-card">
+    <div class="ccm-card-header">
+      <a (click)="closePopup()" class="close card-close">&times;</a>
+      <h3>EDIT CHALLENGE</h3>
+    </div>
+    <div class="ccm-card-body">
+      <table class="table-meta">
+        <tr>
+          <td class="key">Key</td>
+          <td><input type="text" class="form-control" placeholder="New Id" disabled
+            [(ngModel)]="newChallengeId"></td>
+        </tr>
+        <tr>
+          <td class="key">Name</td>
+          <td><input type="text" class="form-control" placeholder="New name" 
+            [(ngModel)]="newChallengeName"></td>
+        </tr>
+        <tr>
+          <td class="key">Description</td>
+          <td><textarea cols="30" rows="3" class="form-control"  placeholder="New Description" 
+            [(ngModel)]="newChallengeDescription"></textarea></td>
+        </tr>
+        <tr>
+          <td class="key">Flag</td>
+          <td><input type="text" class="form-control" placeholder="New flag" 
+            [(ngModel)]="newChallengeFlag"></td>
+        </tr>
+        <tr>
+          <td class="key">Category</td>
+          <td><input type="text" class="form-control" placeholder="New Category" 
+            [(ngModel)]="newChallengeCategory"></td>
+        </tr>
+        <tr>
+          <td class="key">Point</td>
+          <td><input type="number" class="form-control" placeholder="New Category" 
+            [(ngModel)]="newChallengePoint"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button class="btn btn-primary" (click)="saveChallengeForm()">Save</button>
+            <button class="btn btn-default" (click)="closePopup()">Close</button>
+          </td>
+        </tr>
+      </table>                
+    </div>
+  </div>
+</div>

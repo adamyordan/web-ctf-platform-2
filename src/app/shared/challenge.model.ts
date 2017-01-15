@@ -7,11 +7,13 @@ export class Challenge {
     public flag: string,
     public hashFlag: string,
     public description: string,
+    public category: string,
+    public point: number,  //default-point
     // public category: Category[],
   ) { };
 
   static empty(): Challenge {
-    return new Challenge(null, null, null, null);
+    return new Challenge(null, null, null, null, null, null);
   }
 
   static submit(challenge: Challenge, flag: string): boolean {

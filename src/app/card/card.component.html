@@ -1,12 +1,12 @@
 <div class="ctf-card" *ngIf="problem">
   <div class="ctf-card-header">
     <a (click)="closeCard()" class="close card-close">&times;</a>
-    <h3>{{(problem | async)?.name}}</h3>
+    <h3>{{challengeContestInstance?.name}}</h3>
     <div class="detail">
-      <span class="meta">Id: <span class="val">{{(problem | async)?.id}}</span></span>
-      <span class="meta">Category: <span class="val">{{(problem | async)?.category}}</span></span>
-      <span class="meta">Author: <span class="val">{{(problem | async)?.author}}</span></span>
-      <span class="meta">Point: <span class="val">{{(problem | async)?.point}}</span></span>
+      <span class="meta">Id: <span class="val">{{challengeContestInstance?.$key}}</span></span>
+      <span class="meta">Category: <span class="val">{{challengeContestInstance?.category}}</span></span>
+      <span class="meta">Author: <span class="val">{{challengeContestInstance?.author}}</span></span>
+      <span class="meta">Point: <span class="val">{{challengeContestInstance?.point}}</span></span>
     </div>
   </div>
   <nav>
@@ -17,13 +17,35 @@
   </nav>
   <div class="ctf-card-content">
     <div *ngIf="selectedTab === 'problem'">
-      <span>{{(problem | async)?.description}}</span>
+      <div [innerHTML]="(problem | async)?.description|MarkdownToHtml"></div>
       <input class="form-control" type="text" placeholder="flag" [(ngModel)]="editableFlag">
       <button class="btn btn-primary btn-flag" (click)="submitFlag()">Submit</button>
     </div>
     <div *ngIf="selectedTab === 'hints'">
     </div>        
     <div *ngIf="selectedTab === 'solves'">
+      <div *ngIf="(solversObservable|async)?.length > 0">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Username</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let solve of solversObservable | async; let i = index" [attr.data-index]="i">
+              <td>{{i+1}}</td>
+              <td>{{solve.username}}</td>
+              <td>{{solve.time|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <ngb-pagination [collectionSize]="problem.solves.length" [(page)]="scoreboardPage" [directionLinks]="false" [pageSize]="10"></ngb-pagination> -->
+        <div *ngIf="(solversObservable|async)?.length <= 0">
+          <span><i>No solver yet</i></span>
+        </div>
+      </div>
     </div>
     <div *ngIf="selectedTab === 'writeup'">
     </div>        

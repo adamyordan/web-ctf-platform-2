@@ -1,0 +1,29 @@
+<div class="ctf-scoreboard">
+  <h3 class="user-score">score: <span class="user-score-point">{{userData?.point}}</span></h3>
+  <div class="scoreboard-card">
+    <div class="sb-card-header">
+      <h3>Leaderboard</h3>
+    </div>
+    <div class="sb-card-body">
+      <div class="sb-item" *ngFor="let data of scoreboardData; let i = index" [attr.data-index]="i">
+        <div class="sb-item-index">
+          <span class="sbi-hashtag">#</span>
+          <span class="sbi-index">{{i+1}}</span>
+        </div>
+        <div class="sb-item-img">
+          <img src="https://lh5.googleusercontent.com/-P7Tm9alprTE/AAAAAAAAAAI/AAAAAAAAAAA/I4fY_KUSnkg/W96-H96/photo.jpg?sz=64" class="img-circle" alt="">
+        </div>
+        <div class="sb-item-user">
+          <span class="sbi-username" *ngIf="data.username">{{data.username}}</span>
+          <span class="sbi-someone" *ngIf="!data.username"><i>someone</i></span>
+        </div>
+        <div class="sb-item-detail">
+          <span class="sbi-submission-time">{{data.latestCorrectSubmission|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </div>
+        <div class="sb-item-point">
+          <span class="sbi-point">{{data.point}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

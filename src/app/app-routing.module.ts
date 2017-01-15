@@ -20,6 +20,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './login/register.component';
 import { NotFoundComponent } from './notfound/notfound.component';
 import { BoardRegisterComponent } from './board/board-register.component';
+import { CardManageComponent } from './card/card-manage.component';
+import { MessagePopupComponent } from './popup/message-popup.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -31,7 +33,9 @@ const appRoutes: Routes = [
   { path: 'deck-manage/:id', component: DeckManageComponent, canActivate: [AuthGuard, SuperuserGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [RegisterPageGuard] },
   { path: 'login', component: LoginComponent, canActivate: [LoginPageGuard] },
-  { path: '**', component: NotFoundComponent }
+  { path: '**', component: NotFoundComponent },
+  { path: 'card-manage/:id', component: CardManageComponent, outlet: 'popup', canActivate: [AuthGuard, SuperuserGuard] },
+  { path: 'message-popup/:contestId/:id', component: MessagePopupComponent, outlet: 'popup', canActivate: [AuthGuard, SuperuserGuard] },
 ];
 
 @NgModule({

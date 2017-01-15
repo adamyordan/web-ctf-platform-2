@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { AppRoutingModule } from './app-routing.module';
 
+import { MarkdownToHtmlPipe } from 'markdown-to-html-pipe';
+
 import { AuthService } from './auth.service';
 
 import { AppComponent } from './app.component';
@@ -22,6 +24,9 @@ import { RegisterComponent } from './login/register.component';
 import { NotFoundComponent } from './notfound/notfound.component';
 import { SplashComponent } from './shared/splash.component';
 import { BoardRegisterComponent } from './board/board-register.component';
+import { CardManageComponent } from './card/card-manage.component';
+import { MessagePopupComponent } from './popup/message-popup.component';
+import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAKjUApB5F0fnmWX6Pz5hta_bk29nhZXvI',
@@ -38,6 +43,7 @@ const firebaseAuthConfig = {
 
 @NgModule({
   declarations: [
+    MarkdownToHtmlPipe,
     AppComponent,
     DashboardComponent,
     LibraryComponent,
@@ -52,6 +58,9 @@ const firebaseAuthConfig = {
     NotFoundComponent,
     SplashComponent,
     BoardRegisterComponent,
+    CardManageComponent,
+    MessagePopupComponent,
+    ScoreboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +70,7 @@ const firebaseAuthConfig = {
     AppRoutingModule,
   ],
   providers: [
-    AuthService
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })

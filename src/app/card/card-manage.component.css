@@ -1,0 +1,46 @@
+.ccm-card {
+  background-color: white;
+  max-width: 600px;
+  margin: 40px auto;
+  z-index: 1000;
+}
+.ctf-card-manage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+}
+.ccm-bg {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  background-color: rgba(0,0,0,0.5);
+}
+.table-meta td {
+  padding: 10px;
+}
+.table-meta .key {
+  font-weight: bold;
+  vertical-align: top;
+}
+.ccm-card-header {
+  min-height: 50px;
+  background-color: #2aa;
+  text-align: center;
+  padding: 20px 30px;
+}
+.ccm-card-header h3 {
+  margin: 0;
+  color: white;
+  font-weight: bold;  
+}
+.ccm-card-body {
+  padding: 20px;
+}
+.card-close {
+  font-size: 2em;
+}

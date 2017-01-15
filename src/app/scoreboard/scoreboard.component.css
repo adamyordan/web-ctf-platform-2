@@ -1,0 +1,79 @@
+.ctf-scoreboard {
+  padding: 20px;
+}
+.scoreboard-card {
+  font-family: 'Oswald', sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+}
+.sb-card-header {
+  min-height: 50px;
+  background-color: #2aa;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 30px;
+  color: white;
+}
+.sb-card-header h3 {
+  margin: 0px;
+  font-size: 1.2em;
+}
+.sb-card-body {
+  height: calc(100vh - 220px);
+  overflow-y: scroll;
+}
+.sb-item {
+  width: 100%;
+  height: 40px;
+  border-top: 1px solid #ddd;
+  padding: 10px 20px;
+  display: flex
+}
+.sb-item-index, .sb-item-img, .sb-item-user, .sb-item-detail, .sb-item-point {
+  flex: 1;
+}
+.sb-item-index {
+  flex: 0.5;
+}
+.sb-item-img {
+  padding: 0px;
+  text-align: center;
+  margin: -4px 0px;
+}
+.sb-item-user {
+  flex: 2.5;
+}
+.sb-item-detail {
+  flex: 2.5;
+  color: #ccc;
+}
+.sb-item-point {
+  flex: 1.5;
+  color: #4c4;
+  font-size: 1.2em;
+  margin: -4px 0px;
+}
+.sb-item-img img{
+  height: 24px;
+  width: 24px;
+}
+.sbi-hashtag {
+  font-size: 0.8em;
+  color: #999;
+}
+.sbi-someone {
+  color: #ccc;
+}
+.user-score {
+  margin-top: 0px;
+  font-weight: bold;
+  color: #2aa;
+  text-align: right;
+  margin-right: 50px;
+}
+.user-score-point {
+  font-family: 'Oswald';
+  color: #4c4;
+}

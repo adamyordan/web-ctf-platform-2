@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router }   from '@angular/router';
 import { AngularFire, FirebaseObjectObservable, AuthProviders, AuthMethods } from 'angularfire2';
 import { AuthService } from '../auth.service';
 import { Contest } from '../shared/contest.model';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'ctf-board-register',
@@ -27,7 +28,9 @@ export class BoardRegisterComponent {
       if (user) {
         const ref = 'contests/' + this.route.snapshot.params['id'] + '/participants/' + user['$key'];
         this.af.database.object(ref).set(true);
-        this.router.navigate(['board/', this.route.snapshot.params['id']]);
+        swal('Participation Granted', '', 'success').then(() => {
+          this.router.navigate(['board/', this.route.snapshot.params['id']]);          
+        })
       }
     })
   }

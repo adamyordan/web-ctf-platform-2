@@ -11,14 +11,21 @@ import { Challenge } from '../shared/challenge.model';
     <div class="ctf-board">
       <div class="row normalize-margin">
         <div class="col-lg-6 no-padding-sides">
-          <ctf-deck [contest]="contest" [challenges]="challenges"
+          <ctf-deck [contestId]="contestId"
                     (onSelectedProblem)="onSelectedProblem($event)"
                     [selectedProblem]="selectedProblem">
           </ctf-deck>
          </div>
         <div class="col-lg-6 no-padding-sides">
-          <ctf-card [problem]="selectedProblem" (onClose)="onSelectedProblem(null)">
-          </ctf-card>
+          <div *ngIf="selectedProblem">
+            <ctf-card [problem]="selectedProblem" 
+              [contest]="contest"
+              (onClose)="onSelectedProblem(null)">
+            </ctf-card>
+          </div>
+          <div *ngIf="selectedProblem == null">
+            <ctf-scoreboard [contestId]="contestId"></ctf-scoreboard>
+          </div>
         </div>
       </div>
     </div>
@@ -40,11 +47,13 @@ export class BoardComponent {
   selectedProblem : FirebaseObjectObservable<Challenge>;
   contest : FirebaseObjectObservable<Contest>;
   challenges : FirebaseObjectObservable<Challenge>[];
+  contestId: string;
 
   constructor(
     private af: AngularFire,
     private route: ActivatedRoute,
   ) {
+    this.contestId = this.route.snapshot.params['id'];
     this.contest = af.database.object('contests/' + this.route.snapshot.params['id']);
     this.contest.subscribe((ct : Contest) => {
       this.challenges = []

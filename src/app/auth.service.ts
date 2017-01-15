@@ -12,6 +12,8 @@ import 'rxjs/add/operator/delay';
 export class AuthService {
   redirectUrl: string;
   user: FirebaseObjectObservable<User>;
+  userInstance: User;
+
 
   constructor(
     private af: AngularFire,
@@ -21,6 +23,7 @@ export class AuthService {
     this.auth.subscribe((authState: FirebaseAuthState) => {
       if (authState) {
         this.user = this.af.database.object('users/' + authState.uid);        
+        this.user.subscribe(user => this.userInstance = user);
       } else {
         this.user = null;
       }

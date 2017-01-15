@@ -1,6 +1,21 @@
 <div class="ctf-deck-manage">
   <div class="dm-header"><h3>Deck Manage</h3></div>
-  <div class="dm-content">
+  <div class="dm-nav">
+    <div class="dm-container">
+      <ul class="nav nav-pills">
+        <li [class.active]="selectedTab === 'manage'">
+          <a (click)="selectedTab = 'manage'">Manage</a>
+        </li>
+        <li [class.active]="selectedTab === 'submissions'">
+          <a (click)="selectedTab = 'submissions'">Submissions</a>
+        </li>
+        <li [class.active]="selectedTab === 'messages'">
+          <a (click)="selectedTab = 'messages'">Messages</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="dm-content" *ngIf="selectedTab === 'manage'">
     <div class="dm-card">
       <table class="table-meta">
         <tr>
@@ -9,7 +24,9 @@
         </tr>
         <tr>
           <td class="key">Description</td>
-          <td>{{(contest | async)?.description}}</td>
+          <td>
+            <div [innerHTML]="(contest | async)?.description|MarkdownToHtml"></div>
+          </td>
         </tr>
         <tr>
           <td class="key"></td>
@@ -48,8 +65,8 @@
           <div class="dmc-category">{{(challenge | async)?.category}}</div>
           <div class="dmc-point">{{(challenge | async)?.point}}</div>
           <div class="dmc-action">
-            <button class="btn btn-sm btn-default" 
-              (click)="editChallenge(challenge)">edit</button>
+            <button class="btn btn-sm btn-default" (click)="editChallengePopup(challenge)">
+              edit</button>
             <button class="btn btn-sm btn-danger" 
               (click)="removeChallengeFromContest(challenge)">delete</button>
           </div>
@@ -87,6 +104,22 @@
             <td class="key">Description</td>
             <td>{{selectedAllChallenge.description}}</td>
           </tr>
+          <tr>
+            <td class="key">Flag</td>
+            <td>{{selectedAllChallenge.flag}}</td>
+          </tr>
+          <tr>
+            <td class="key">HashedFlag</td>
+            <td>{{selectedAllChallenge.hashFlag}}</td>
+          </tr>
+          <tr>
+            <td class="key">Category</td>
+            <td>{{selectedAllChallenge.category}}</td>
+          </tr>
+          <tr>
+            <td class="key">Point</td>
+            <td>{{selectedAllChallenge.point}}</td>
+          </tr>
         </table>
       </div>
 
@@ -113,6 +146,16 @@
               [(ngModel)]="newChallengeFlag"></td>
           </tr>
           <tr>
+            <td class="key">Category</td>
+            <td><input type="text" class="form-control" placeholder="New Category" 
+              [(ngModel)]="newChallengeCategory"></td>
+          </tr>
+          <tr>
+            <td class="key">Point</td>
+            <td><input type="number" class="form-control" placeholder="New Category" 
+              [(ngModel)]="newChallengePoint"></td>
+          </tr>
+          <tr>
             <td></td>
             <td>
               <button class="btn btn-primary" (click)="saveChallengeForm()">Save</button>
@@ -121,7 +164,54 @@
           </tr>
         </table>      
       </div>
-
     </div>
   </div>
+
+  <div class="dm-content" *ngIf="selectedTab === 'submissions'">
+    <div class="dm-card dm-card-wide">
+      <table class="table table-submission">
+        <thead>
+          <tr>
+            <th>time</th>
+            <th>username</th>
+            <th>challenge</th>
+            <th>flag</th>
+            <th>correct</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let submission of submissions">
+            <td>
+              {{submission.time|date:'yyyy-MM-dd HH:mm:ss'}}
+              <br><small class="text-small">{{submission.$key}}</small>
+            </td>
+            <td>
+              {{submission.username}}
+              <br><small class="text-small">{{submission.userKey}}</small>
+            </td>
+            <td>{{submission.challengeName}}
+              <br><small class="text-small">{{submission.challenge}}</small></td>
+            <td>{{submission.flag}}</td>
+            <td>{{submission.correct}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="dm-content" *ngIf="selectedTab === 'messages'">
+    <div class="dm-card">
+      <button class="btn btn-primary" (click)="showMessagePopup('NEW')">New Message</button>      
+    </div>
+    <div class="dm-card dm-card-message" *ngFor="let message of messages">
+      <h3>{{message.title}}
+        <div class="right">
+          <button class="btn btn-default" (click)="showMessagePopup(message.$key)">Edit</button>      
+          <button class="btn btn-danger" (click)="deleteMessage(message.$key)">Delete</button>
+        </div>
+      </h3>
+      <div [innerHTML]="message.body|MarkdownToHtml"></div>
+    </div>
+  </div>
+
 </div>

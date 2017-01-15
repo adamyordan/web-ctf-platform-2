@@ -1,0 +1,109 @@
+.ctf-deck {
+  background-color: #fff;
+  font-family: sans-serif;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #ddd;
+}
+.deck-header {
+  padding: 0px 30px;
+}
+.deck-header > h3 {
+  font-weight: bold;
+  margin: 30px 0px;
+}
+.deck-nav {
+  min-height: 60px;
+  background-color: #eee;
+  padding: 10px;
+}
+.deck-nav > .nav-pills>li>a {
+  color: #555;
+  font-weight: bold;
+  cursor: pointer;
+}
+.deck-nav > .nav-pills>li.active>a {
+  color: #fff;
+  background-color: #2aa;
+}
+.deck-main {
+  min-height: 100px;
+  overflow-y: scroll;
+  height: calc(100vh - 198px);
+}
+.deck-problem-item {
+  border: 1px solid #ddd;
+  margin: 5px;
+  display: flex;
+  padding-left: 10px;
+}
+.deck-problem-item:hover {
+  background-color: rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+.deck-problem-item.active {
+  background-color: rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.dpi-id, .dpi-name, .dpi-point, .dpi-action, .dpi-category {
+  flex: 1;
+  text-align: left;
+  padding: 10px 5px;
+  line-height: 1;
+}
+.dpi-id {
+  flex: 0.5;
+}
+.dpi-category {
+  color: #999;
+}
+.dpi-point {
+  flex: 0.5;
+  text-align: center;
+}
+.dpi-action {
+  padding: 0px;
+  text-align: left;
+}
+.dpi-action button {
+  margin: 0px;
+  height: 100%;
+  border-radius: 0px;
+  min-width: 50px;
+  border: 1px solid #ddd;
+  border-top: 0px;
+  border-bottom: 0px;
+  background-color: transparent;
+}
+.solved {
+  background-color: #2aa;
+  color: white;
+  border-color: #2aa;
+}
+.solved:hover {
+  background-color: #3bb;
+}
+.solved .dpi-action button {
+  color: white;
+  border-color: white; 
+  background-color: transparent;
+}
+.solved .dpi-category {
+  color: #6ff;
+}
+.msg-card {
+  margin: 10px;
+  border: 1px solid #ddd;
+  padding:  20px; 
+}
+.msg-card h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 0px;
+}
+.right {
+  float: right;
+}
+.scoreboard-item {
+  border: 1px solid #ddd;
+  padding: 20px;
+}
